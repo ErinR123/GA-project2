@@ -1,0 +1,26 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 30px;
+}
+
+body {
+  background-color: rgb(236, 90, 150);
+  color: white;
+  font-family: 'Oswald', sans-serif;
+}
+a {
+    color: white;
+}
+nav {
+    display: flex;
+    gap: 90px;
+    font-size: 17px;
+    justify-content: center;
+    margin-right: 50px;
+}
