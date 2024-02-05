@@ -1,12 +1,17 @@
 const Sleep = require("../models/sleep");
+const User = require("../models/user");
 
 async function add(req, res) {
-  // Update this line because now we need the _id of the new movie
-  const sleep = await Sleep.create(req.body);
-  // Redirect to the new movie's show functionality
-  res.redirect("/weekOverview");
-}
+    const user = await User.findById(req.user._id);
+    console.log(req.body);
+    const sleep = await Sleep.create(req.body);
+    user.sleep.push(sleep._id);
+    await user.save();
+    res.redirect("/weekOverview");
+  };
+  
 
 module.exports = {
   add,
-}
+  
+};

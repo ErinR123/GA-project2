@@ -1,12 +1,15 @@
 const Mindfullness = require("../models/mindfullness");
+const User = require("../models/user");
 
 async function add(req, res) {
-  // Update this line because now we need the _id of the new movie
+  const user = await User.findById(req.user._id);
+  console.log(req.body);
   const mindfullness = await Mindfullness.create(req.body);
-  // Redirect to the new movie's show functionality
+  user.mindfullness.push(mindfullness._id);
+  await user.save();
   res.redirect("/weekOverview");
-}
+};
 
 module.exports = {
   add,
-}
+};

@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
+
+
 const mindfullnessSchema = new mongoose.Schema({
-  Mindfullness: {
+  mindfullnessOption: {
     type: String,
     enum: ['Meditate', 'Time outside', 'Read', 'Spoke to a friend', 'Art']
   },
+
 });
 
-module.exports = mongoose.model("mindfullness", mindfullnessSchema);
+module.exports = mongoose.model("Mindfullness", mindfullnessSchema);

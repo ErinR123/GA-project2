@@ -7,7 +7,7 @@ const sleepCtrl = require("../controllers/sleep")
 
 router.get("/", async (req, res) => {
     try {
-      const options = await Sleep.schema.path("Sleep").enumValues;
+      const options = await Sleep.schema.path("sleepOption").enumValues;
       res.render("sleep", { options });
     } catch (error) {
       console.error(error);
@@ -16,5 +16,6 @@ router.get("/", async (req, res) => {
   });
 
 router.post("/", sleepCtrl.add);
+
 
 module.exports = router;

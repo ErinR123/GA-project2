@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const nourishmentSchema = new mongoose.Schema({
-  Nourishment: {
+  nourishmentOption: {
     type: String,
     enum: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun']
   },
 });
 
-module.exports = mongoose.model("nourishment", nourishmentSchema);
+module.exports = mongoose.model("Nourishment", nourishmentSchema);

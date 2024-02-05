@@ -6,12 +6,11 @@ const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 require("dotenv").config();
 require("./config/database");
 require("./config/passport");
-
+const ensureLoggedIn = require("./config/ensureLoggedIn");
 
 // Create the Express app
 const app = express();
 const port = process.env.PORT || 3001;
-
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -23,24 +22,26 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(express.static('public'))
+
+app.use(express.static("public"));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 // Add this middleware BELOW passport middleware
 app.use(function (req, res, next) {
-    res.locals.user = req.user; // Now the `user` variable is available inside all EJS templates (will be `undefined` if no logged in user)
-    next();
-  });
-  
+  res.locals.user = req.user; // Now the `user` variable is available inside all EJS templates (will be `undefined` if no logged in user)
+  next();
+});
 
 //Routes
 app.use("/", require("./routes/index"));
-app.use("/movement", require("./routes/movement"));
-app.use("/sleep", require("./routes/sleep"));
-app.use("/nourishment", require("./routes/nourishment"));
-app.use("/mindfullness", require("./routes/mindfullness"));
-app.use("/weekOverview", require("./routes/weekOverview"));
 
+app.use("/movement", ensureLoggedIn, require("./routes/movement"));
+app.use("/sleep", ensureLoggedIn, require("./routes/sleep"));
+app.use("/nourishment", ensureLoggedIn, require("./routes/nourishment"));
+app.use("/mindfullness", ensureLoggedIn, require("./routes/mindfullness"));
+app.use("/weekOverview", ensureLoggedIn, require("./routes/weekOverview"));
 
 // Mount routes
 app.get("/", (req, res) => res.type("html").send(html));

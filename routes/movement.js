@@ -5,7 +5,7 @@ const movementCtrl = require("../controllers/movement");
 
 router.get("/", async (req, res) => {
     try {
-      const options = await Movement.schema.path("Movement").enumValues;
+      const options = await Movement.schema.path("movementOption").enumValues;
       res.render("movement", { options });
     } catch (error) {
       console.error(error);

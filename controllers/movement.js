@@ -1,11 +1,17 @@
 const Movement = require("../models/movement");
+const User = require("../models/user");
+
 
 async function add(req, res) {
-  // Update this line because now we need the _id of the new movie
-  const movement = await Movement.create(req.body);
-  // Redirect to the new movie's show functionality
-  res.redirect("/weekOverview");
-}
+    const user = await User.findById(req.user._id);
+    console.log(req.body);
+    const movement = await Movement.create(req.body);
+    user.mindfullness.push(movement._id);
+    await user.save();
+    res.redirect("/weekOverview");
+  };
+
+
 
 module.exports = {
   add,

@@ -9,5 +9,10 @@
     <form action="/weekOverview" method="get">
         <button type="menu">HOME PAGE</button>
     </form>
+    
+    <% user.mindfullness.forEach(m => { %> 
+        <p><%= m.mindfullnessOption %></p>
+        <% }) %>
+      
 </body>
 </html>

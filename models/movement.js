@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const movementSchema = new mongoose.Schema({
-  Movement: {
+  movementOption: {
     type: String,
     enum: ['Walk', 'Run', 'Swim', 'Ride', 'Rest',]
   },
 });
 
-module.exports = mongoose.model("movement", movementSchema);
+module.exports = mongoose.model("Movement", movementSchema);
