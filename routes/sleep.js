@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Sleep = require("../models/sleep");
 
+const sleepCtrl = require("../controllers/sleep")
+
 router.get("/", async (req, res) => {
     try {
       const options = await Sleep.schema.path("Sleep").enumValues;
@@ -13,5 +15,6 @@ router.get("/", async (req, res) => {
     }
   });
 
+router.post("/", sleepCtrl.add);
 
 module.exports = router;

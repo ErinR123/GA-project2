@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Movement = require("../models/movement");
+const movementCtrl = require("../controllers/movement");
 
 router.get("/", async (req, res) => {
     try {
@@ -12,5 +13,6 @@ router.get("/", async (req, res) => {
     }
   });
 
+router.post("/", movementCtrl.add);
 
 module.exports = router;
