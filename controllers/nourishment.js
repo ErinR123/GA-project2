@@ -9,6 +9,16 @@ async function add(req, res) {
     await user.save();
     res.redirect("/weekOverview");
   };
+
+  async function deleteNourishment(req, res) {
+    const nourishment = await Nourishment.findByIdAndDelete(req.params.nourishmentId);
+  
+    
+  
+    res.redirect("/weekOverview");
+  };
+
 module.exports = {
   add,
+  deleteNourishment,
 }

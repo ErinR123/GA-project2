@@ -17,5 +17,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", sleepCtrl.add);
 
+router.delete("/:sleepId", sleepCtrl.deleteSleep);
 
 module.exports = router;

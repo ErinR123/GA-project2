@@ -1,3 +1,4 @@
+const mindfullness = require("../models/mindfullness");
 const Mindfullness = require("../models/mindfullness");
 const User = require("../models/user");
 
@@ -8,8 +9,17 @@ async function add(req, res) {
   user.mindfullness.push(mindfullness._id);
   await user.save();
   res.redirect("/weekOverview");
-};
+}
+
+async function deleteMindfullness(req, res) {
+  const mindfullness = await Mindfullness.findByIdAndDelete(req.params.mindfullnessId);
+
+  
+
+  res.redirect("/weekOverview");
+}
 
 module.exports = {
   add,
+  deleteMindfullness,
 };

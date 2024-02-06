@@ -12,18 +12,20 @@
 body {
   background-color: rgb(236, 90, 150);
   color: white;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 a {
-    color: white;
+  color: white;
 }
 nav {
-    display: flex;
-    gap: 90px;
-    font-size: 17px;
-    justify-content: center;
-    margin-right: 50px;
+  display: flex;
+  gap: 90px;
+  font-size: 17px;
+  justify-content: center;
+  margin-right: 50px;
 }
+
+
 
 #mindfullness {
   background-color: rgb(236, 90, 150);
@@ -39,4 +41,18 @@ nav {
 
 #nourishment {
   background-color: rgb(236, 90, 150);
+}
+
+#overview {
+  background-color: rgb(236, 90, 150);
+}
+
+#rectangle {
+  height: 50px;
+  width: 100px;
+  background-color: white;
+  text-align: center;
+  margin-left: 515px;
+  border-radius: 40%;
+  color: black;
 }

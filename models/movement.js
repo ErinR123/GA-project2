@@ -7,3 +7,4 @@ const movementSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Movement", movementSchema);
+

@@ -17,4 +17,7 @@ router.get("/", async (req, res) => {
   });
 
 router.post("/", nourishmentCtrl.add);
+
+router.delete("/:nourishmentId", nourishmentCtrl.deleteNourishment);
+
 module.exports = router;

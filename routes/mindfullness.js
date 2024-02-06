@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Mindfullness = require("../models/mindfullness");
 const mindfullnessCtrl = require("../controllers/mindfullness");
-//  const ensureLoggedIn = require("../config/ensureLoggedIn");
+
 
 router.get("/",  async (req, res) => {
     try {
@@ -15,5 +15,7 @@ router.get("/",  async (req, res) => {
   });
 
   router.post("/",  mindfullnessCtrl.add);
+  router.delete("/:mindfullnessId", mindfullnessCtrl.deleteMindfullness);
+
   
 module.exports = router;

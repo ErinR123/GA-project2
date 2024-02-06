@@ -7,6 +7,7 @@ require("dotenv").config();
 require("./config/database");
 require("./config/passport");
 const ensureLoggedIn = require("./config/ensureLoggedIn");
+const methodOverride = require("method-override");
 
 // Create the Express app
 const app = express();
@@ -23,6 +24,7 @@ app.use(
   })
 );
 
+app.use(methodOverride("_method"));
 app.use(express.static("public"));
 app.use(passport.initialize());
 app.use(passport.session());

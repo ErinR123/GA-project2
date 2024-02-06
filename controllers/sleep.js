@@ -10,8 +10,16 @@ async function add(req, res) {
     res.redirect("/weekOverview");
   };
   
+  async function deleteSleep(req, res) {
+    const sleep = await Sleep.findByIdAndDelete(req.params.sleepId);
+  
+    
+  
+    res.redirect("/weekOverview");
+  };
 
 module.exports = {
   add,
+  deleteSleep,
   
 };

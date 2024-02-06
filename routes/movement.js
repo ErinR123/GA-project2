@@ -15,4 +15,9 @@ router.get("/", async (req, res) => {
 
 router.post("/", movementCtrl.add);
 
+router.delete("/:movementId", movementCtrl.deleteMovement);
+
 module.exports = router;
+
+
+  

@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <link rel="stylesheet"  href="/stylesheets.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets.css" />
 
     <title>movement</title>
-</head>
-<body id="nourishment">
-    <form action="/nourishment" method="post">
-        <button type="submit">Add Meal</button>
+  </head>
+  <body id="nourishment">
+    <form action="/nourishment" method="POST">
+      <select name="nourishmentOption">
+        <% options.forEach(option => { %>
+        <option value="<%= option %>"><%= option %></option>
+        <% }) %>
+      </select>
+      <button type="submit">SUBMIT</button>
     </form>
-    
-</body>
+  </body>
 </html>
