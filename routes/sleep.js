@@ -19,4 +19,6 @@ router.post("/", sleepCtrl.add);
 
 router.delete("/:sleepId", sleepCtrl.deleteSleep);
 
+router.put("/:sleepId", sleepCtrl.update)
+
 module.exports = router;

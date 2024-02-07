@@ -25,10 +25,10 @@ nav {
   margin-right: 50px;
 }
 
-
-
 #mindfullness {
   background-color: rgb(236, 90, 150);
+
+  margin-left: 350px;
 }
 
 #movement {
@@ -39,20 +39,29 @@ nav {
   background-color: rgb(236, 90, 150);
 }
 
-#nourishment {
-  background-color: rgb(236, 90, 150);
-}
 
 #overview {
   background-color: rgb(236, 90, 150);
 }
 
 #rectangle {
-  height: 50px;
-  width: 100px;
+  height: 250px;
+  width: 400px;
+  color: black;
   background-color: white;
   text-align: center;
-  margin-left: 515px;
-  border-radius: 40%;
+  margin-left: 350px;
+  border-radius: 10%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the values for desired shadow */
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+  margin-bottom: 20px;
+ display: inline-block;
+}
+
+#homeButton {
   color: black;
 }
+
+

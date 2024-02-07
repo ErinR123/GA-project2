@@ -8,43 +8,66 @@
   </head>
   <body id="overview">
     <form action="/weekOverview" method="get">
-      <button type="menu">HOME PAGE</button>
+      <button id="homeButton"> <a href="/wellness-links">Home Page</a></button>
     </form>
 
-    <nav>
+    <nav id="yourWeek">
       <h1>Your Week</h1>
     </nav>
     <div id="rectangle">
-       <% user.mindfullness.forEach(m => { %>
-        <p><%= m.mindfullnessOption %></p>
-        <form action="/mindfullness/<%= m._id %>?_method=DELETE" method="POST">
-          <button type="submit">REMOVE</button>
-        </form>
-      </div>
-
-    <% }) %> 
-    
-    <% user.movement.forEach(exercise => { %>
-    <p><%= exercise.movementOption %></p>
-    <form action="/movement/<%= exercise._id %>?_method=DELETE" method="POST">
-      <button type="submit">REMOVE</button>
+      <% user.mindfullness.forEach(m => { %>
+      <p><%= m.mindfullnessOption %> <%= m.dayOfWeekOption %></p>
+      <form action="/mindfullness/<%= m._id %>?_method=DELETE" method="POST">
+        <button type="submit">REMOVE</button>
+      </form>
+      <form action="/mindfullness/<%= m._id%>?_method=PUT" method="POST">
+        <select name="mindfullnessOption">
+            <% mindfullnessOptions.forEach(option => { %>
+                <option value="<%= option %>"><%= option %></option>
+            <% }) %>
+        </select>
+        <select name="dayOfWeekOption">
+          <% weekOptions.forEach(dayOption => { %>
+              <option value="<%= dayOption %>"><%= dayOption %></option>
+          <% }) %>
+      </select>
+        <button type="submit">Update</button>
     </form>
 
-    <% }) %>
-    
-    <% user.sleep.forEach(hour => { %>
-    <p><%= hour.sleepOption %></p>
-    <form action="/sleep/<%= hour._id %>?_method=DELETE" method="POST">
-      <button type="submit">REMOVE</button>
-    </form>
+      <% }) %>
+    </div>
 
-    <% }) %> 
-    
-    <% user.nourishment.forEach(n => { %>
-    <p><%= n.nourishmentOption %></p>
-    <form action="/nourishment/<%= n._id %>?_method=DELETE" method="POST">
-      <button type="submit">REMOVE</button>
+    <div id="rectangle">
+      <% user.movement.forEach(exercise => { %>
+      <p><%= exercise.movementOption %></p>
+      <form action="/movement/<%= exercise._id %>?_method=DELETE" method="POST">
+        <button type="submit">REMOVE</button>
+      </form>
+      <form action="/movement/<%= exercise._id%>?_method=PUT" method="POST">
+        <select name="movementOption">
+            <% movementOptions.forEach(option => { %>
+                <option value="<%= option %>"><%= option %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Update</button>
     </form>
-    <% }) %>
+      <% }) %>
+    </div>
+    <div id="rectangle">
+      <% user.sleep.forEach(hour => { %>
+      <p><%= hour.sleepOption %></p>
+      <form action="/sleep/<%= hour._id %>?_method=DELETE" method="POST">
+        <button type="submit">REMOVE</button>
+      </form>
+      <form action="/sleep/<%= hour._id%>?_method=PUT" method="POST">
+        <select name="sleepOption">
+            <% sleepOptions.forEach(option => { %>
+                <option value="<%= option %>"><%= option %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Update</button>
+    </form>
+      <% }) %>
+    </div>
   </body>
 </html>

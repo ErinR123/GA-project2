@@ -41,7 +41,7 @@ app.use("/", require("./routes/index"));
 
 app.use("/movement", ensureLoggedIn, require("./routes/movement"));
 app.use("/sleep", ensureLoggedIn, require("./routes/sleep"));
-app.use("/nourishment", ensureLoggedIn, require("./routes/nourishment"));
+
 app.use("/mindfullness", ensureLoggedIn, require("./routes/mindfullness"));
 app.use("/weekOverview", ensureLoggedIn, require("./routes/weekOverview"));
 

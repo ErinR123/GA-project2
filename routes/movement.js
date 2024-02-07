@@ -17,6 +17,8 @@ router.post("/", movementCtrl.add);
 
 router.delete("/:movementId", movementCtrl.deleteMovement);
 
+router.put("/:movementId", movementCtrl.update);
+
 module.exports = router;
 
 

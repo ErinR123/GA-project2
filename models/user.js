@@ -29,12 +29,6 @@ const userSchema = new Schema(
         ref: "Movement",
       },
     ],
-    nourishment: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Nourishment",
-      },
-    ],
   },
   {
     timestamps: true,

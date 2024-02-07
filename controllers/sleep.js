@@ -17,9 +17,19 @@ async function add(req, res) {
   
     res.redirect("/weekOverview");
   };
+  
+  async function update(req, res) {
+    await Sleep.findOneAndUpdate(
+      {_id: req.params.sleepId},
+      // update object with updated properties
+      req.body,
+      // options object with new: true to make sure updated doc is returned
+    );
+    res.redirect("/weekOverview");
+  }
 
 module.exports = {
   add,
   deleteSleep,
-  
+  update,
 };

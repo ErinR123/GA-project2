@@ -4,18 +4,11 @@ const Mindfullness = require("../models/mindfullness");
 const mindfullnessCtrl = require("../controllers/mindfullness");
 
 
-router.get("/",  async (req, res) => {
-    try {
-      const options = await Mindfullness.schema.path("mindfullnessOption").enumValues;
-      res.render("mindfullness", { options });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send("Internal Server Error");
-    }
-  });
+router.get("/", mindfullnessCtrl.renderMindfullness);
+
 
   router.post("/",  mindfullnessCtrl.add);
   router.delete("/:mindfullnessId", mindfullnessCtrl.deleteMindfullness);
-
-  
+  router.put("/:mindfullnessId", mindfullnessCtrl.update);
+ 
 module.exports = router;
