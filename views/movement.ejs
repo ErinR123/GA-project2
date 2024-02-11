@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <link rel="stylesheet"  href="/stylesheets.css" />
-    <title>mindfullness</title>
-    <title>movement</title>
-  </head>
+<%- include('../views/partials/partials') %>
+  <title>movement</title>
   <body id="movement">
-    <form action="/movement" method="POST">
-      <select name="movementOption">
-        <% options.forEach(option => { %>
-        <option value="<%= option %>"><%= option %></option>
-        <% }) %>
-      </select>
-      <button type="submit">Add</button>
-    </form>
-  </body>
+    <div class="card text-center">
+      <div class="card-header">
+    
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">  <img id="sneaker" src="images/sneaker.png" alt=""></h5>
+        <p class="card-text"></p>
+
+        <!-- Inserted form for movement -->
+        <form action="/movement" method="POST">
+            <div class="form-group">
+                <label for="movementOption">Movement Option</label>
+                <select class="form-control" name="movementOption" id="movementOption">
+                    <% options.forEach(option => { %>
+                        <option value="<%= option %>"><%= option %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+      </div>
+      <div class="card-footer text-muted">
+       
+      </div>
+    </div>
 </html>

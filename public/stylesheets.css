@@ -23,11 +23,11 @@ nav {
 
 
 #movement {
-  background-color: #ff66c4;
+  background-color: #fff;
 }
 
 #sleep {
-  background-color: #ff66c4;
+  background-color: #fff;
   
 }
 
@@ -41,6 +41,7 @@ nav {
   color: black;
   background-color: white;
   text-align: center;
+  align-items: center;
   margin-left: 350px;
   border-radius: 10%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the values for desired shadow */
