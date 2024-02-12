@@ -1,15 +1,11 @@
-# README
+# RUN START
 
-This is the [Express](https://expressjs.com) [Hello world](https://expressjs.com/en/starter/hello-world.html) demo on [Render](https://render.com).
+Run start is a fitness and wellness tracker. Designed so users can track/plan their movement, sleep and mindfulness for the week with options for updating or deleting depending on user choice. In additon to the tracking/planning the app also provides a seperate page with resources for users to help plan their week. Designing the UX was a very rewarding part of this project.
 
-The app in this repo is deployed at [https://ga-express-render.onrender.com/](https://ga-express-render.onrender.com/).
+## Tech stack:
 
-## Deployment
+Java Script, HTML, CSS, Express, MongoDB.
 
-See https://render.com/docs/deploy-node-express-app or follow the steps below:
+## Ice Box Items:
 
-Create a new web service with the following values:
-  * Build Command: `npm install`
-  * Start Command: `node app.js`
-
-That's it! Your web service will be live on your Render URL as soon as the build finishes.
+Additonally I would like the user to have options for multiple weeks. I would like a nutrition section and the user to be able to track their KM'S of the selected movement.
