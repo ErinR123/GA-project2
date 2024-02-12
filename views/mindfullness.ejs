@@ -12,13 +12,14 @@
           <!-- Inserted form here -->
           <form action="/mindfullness" method="POST">
               <div class="form-group">
-                  <label for="mindfulnessOption">Mindfulness Option</label>
-                  <select class="form-control" name="mindfulnessOption" id="mindfulnessOption">
+                  <label for="mindfullnessOption">Mindfulness Option</label>
+                  <select class="form-control" name="mindfullnessOption" id="mindfullnessOption">
                       <% options.forEach(option => { %>
                           <option value="<%= option %>"><%= option %></option>
                       <% }) %>
                   </select>
               </div>
+              <button type="submit" class="btn btn-primary">Add</button>
               <div class="form-group">
                   <label for="dayOfWeekOption">Day of the Week</label>
                   <select class="form-control" name="dayOfWeekOption" id="dayOfWeekOption">

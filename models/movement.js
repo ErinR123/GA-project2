@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const movementSchema = new mongoose.Schema({
   movementOption: {
     type: String,
-    enum: ['Walk', 'Run', 'Swim', 'Ride', 'Rest',]
+    enum: ['Walked', 'Ran', 'Swam', 'Rode', 'Rest Day',]
   },
 });
 

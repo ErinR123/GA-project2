@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const mindfullnessSchema = new mongoose.Schema({
   mindfullnessOption: {
     type: String,
-    enum: ['Meditate', 'Time outside', 'Read', 'Spoke to a friend', 'Art']
+    enum: ['Meditate', 'Time outside', 'Read for 30 Minutes', 'Spoke to a friend', 'Art']
   },
 dayOfWeekOption: {
   type: String,

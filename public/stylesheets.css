@@ -12,6 +12,10 @@ body {
 a {
   color: white;
 }
+a:hover {
+  text-decoration: underline;
+  color: white;
+}
 nav {
   display: flex;
   gap: 90px;
@@ -38,8 +42,8 @@ nav {
 #rectangle {
   height: 250px;
   width: 400px;
-  color: black;
-  background-color: white;
+  color: #ff66c4;
+  background-color: rgb(232, 232, 231);
   text-align: center;
   align-items: center;
   margin-left: 350px;
@@ -189,4 +193,27 @@ h3 {
 
 #card {
   color: black;
+}
+
+.card p {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-top: 1px solid #ccc ;
+}
+
+
+.card-link {
+  font-size: x-small; /* Adjust the font size as needed */
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px  solid white;
+}
+
+.card p {
+  color: gray;
+}
+
+.card h5 {
+  color: #ff66c4;
 }
