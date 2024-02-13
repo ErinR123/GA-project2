@@ -6,6 +6,8 @@ Run start is a fitness and wellness tracker. Designed so users can track/plan th
 
 Java Script, HTML, CSS, Express, MongoDB.
 
+## Getting started: https://ga-students.slack.com/archives/D066BLNNPA7/p1707723326108139
+
 ## Ice Box Items:
 
 Additonally I would like the user to have options for multiple weeks. I would like a nutrition section and the user to be able to track their KM'S of the selected movement.
