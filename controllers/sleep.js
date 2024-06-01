@@ -2,31 +2,28 @@ const Sleep = require("../models/sleep");
 const User = require("../models/user");
 
 async function add(req, res) {
-    const user = await User.findById(req.user._id);
-    console.log(req.body);
-    const sleep = await Sleep.create(req.body);
-    user.sleep.push(sleep._id);
-    await user.save();
-    res.redirect("/weekOverview");
-  };
-  
-  async function deleteSleep(req, res) {
-    const sleep = await Sleep.findByIdAndDelete(req.params.sleepId);
-  
-    
-  
-    res.redirect("/weekOverview");
-  };
-  
-  async function update(req, res) {
-    await Sleep.findOneAndUpdate(
-      {_id: req.params.sleepId},
-      // update object with updated properties
-      req.body,
-      // options object with new: true to make sure updated doc is returned
-    );
-    res.redirect("/weekOverview");
-  }
+  const user = await User.findById(req.user._id);
+  console.log(req.body);
+  const sleep = await Sleep.create(req.body);
+  user.sleep.push(sleep._id);
+  await user.save();
+  res.redirect("/weekOverview");
+}
+
+async function deleteSleep(req, res) {
+  const sleep = await Sleep.findByIdAndDelete(req.params.sleepId);
+
+  res.redirect("/weekOverview");
+}
+
+async function update(req, res) {
+  await Sleep.findOneAndUpdate(
+    { _id: req.params.sleepId },
+
+    req.body
+  );
+  res.redirect("/weekOverview");
+}
 
 module.exports = {
   add,

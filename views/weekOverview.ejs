@@ -1,4 +1,4 @@
-<%- include('../views/partials/partials') %>
+<%- include("../views/partials/partials") %>
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -10,21 +10,21 @@
       <path d="M9.167 4.5a1.167 1.167 0 1 1-2.334 0 1.167 1.167 0 0 1 2.334 0"/>
       <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 0 1 7-7 3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 0 0 7 7 7 0 0 1-7-7m7 4.667a1.167 1.167 0 1 1 0-2.334 1.167 1.167 0 0 1 0 2.334"/>
     </svg></h5>
-    <% user.mindfullness.forEach(m => { %>
-      <p><%= m.mindfullnessOption %> <%= m.dayOfWeekOption %></p>
-      <form action="/mindfullness/<%= m._id %>?_method=DELETE" method="POST">
+    <% user.mindfulness.forEach(m => { %>
+      <p><%= m.mindfulnessOption %> <%= m.dayOfWeekOption %></p>
+      <form action="/mindfulness/<%= m._id %>?_method=DELETE" method="POST">
         <button class="card-link" type="submit">Remove</button>
       </form>
       <button class="card-link update-btn">Update</button>
-      <form action="/mindfullness/<%= m._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-        <select name="mindfullnessOption">
-          <% mindfullnessOptions.forEach(option => { %>
-            <option value="<%= option %>" <%= m.mindfullnessOption === option ? 'selected' : '' %>><%= option %></option>
+      <form action="/mindfulness/<%= m._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
+        <select name="mindfulnessOption">
+          <% mindfulnessOptions.forEach(option => { %>
+            <option value="<%= option %>" <%= m.mindfulnessOption === option ? "selected" : "" %>><%= option %></option>
           <% }) %>
         </select>
         <select name="dayOfWeekOption">
           <% weekOptions.forEach(dayOption => { %>
-            <option value="<%= dayOption %>" <%= m.dayOfWeekOption === dayOption ? 'selected' : '' %>><%= dayOption %></option>
+            <option value="<%= dayOption %>" <%= m.dayOfWeekOption === dayOption ? "selected" : "" %>><%= dayOption %></option>
           <% }) %>
         </select>
         <button class="card-link" type="submit">Update</button>
@@ -56,7 +56,7 @@
           <form action="/movement/<%= exercise._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
             <select name="movementOption">
               <% movementOptions.forEach(option => { %>
-                <option value="<%= option %>" <%= exercise.movementOption === option ? 'selected' : '' %>><%= option %></option>
+                <option value="<%= option %>" <%= exercise.movementOption === option ? "selected" : "" %>><%= option %></option>
               <% }) %>
             </select>
             <button class="card-link" type="submit">Update</button>
@@ -83,7 +83,7 @@
           <form action="/sleep/<%= hour._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
             <select name="sleepOption">
               <% sleepOptions.forEach(option => { %>
-                <option value="<%= option %>" <%= hour.sleepOption === option ? 'selected' : '' %>><%= option %></option>
+                <option value="<%= option %>" <%= hour.sleepOption === option ? "selected" : "" %>><%= option %></option>
               <% }) %>
             </select>
             <button class="card-link" type="submit">Update</button>
@@ -97,8 +97,8 @@
 </html>
   <script>
   $(document).ready(function() {
-    $('.update-btn').click(function() {
-      $(this).siblings('.update-form').toggle();
+    $(".update-btn").click(function() {
+      $(this).siblings(".update-form").toggle();
     });
   });
   </script>

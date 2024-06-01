@@ -1,5 +1,5 @@
-<%- include('../views/partials/partials') %>
-    <title>mindfullness</title>
+<%- include("../views/partials/partials") %>
+    <title>mindfulness</title>
 <body>
     
     <div id="card" class="card text-center">
@@ -9,11 +9,11 @@
         <div class="card-body">
           <p class="card-text"><img id="mindfulnessImage" src="images/mindfulnessImage.png" alt=""></p>
   
-          <!-- Inserted form here -->
-          <form action="/mindfullness" method="POST">
+        
+          <form action="/mindfulness" method="POST">
               <div class="form-group">
-                  <label for="mindfullnessOption">Mindfulness Option</label>
-                  <select class="form-control" name="mindfullnessOption" id="mindfullnessOption">
+                  <label for="mindfulnessOption">Mindfulness Option</label>
+                  <select class="form-control" name="mindfulnessOption" id="mindfulnessOption">
                       <% options.forEach(option => { %>
                           <option value="<%= option %>"><%= option %></option>
                       <% }) %>

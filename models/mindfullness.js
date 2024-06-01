@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
 
-
-const mindfullnessSchema = new mongoose.Schema({
-  mindfullnessOption: {
+const mindfulnessSchema = new mongoose.Schema({
+  mindfulnessOption: {
     type: String,
-    enum: ['Meditate', 'Time outside', 'Read for 30 Minutes', 'Spoke to a friend', 'Art']
+    enum: [
+      "Meditate",
+      "Time outside",
+      "Read for 30 Minutes",
+      "Spoke to a friend",
+      "Art",
+    ],
   },
-dayOfWeekOption: {
-  type: String,
-    enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-},
+  dayOfWeekOption: {
+    type: String,
+    enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  },
 });
 
-module.exports = mongoose.model("Mindfullness", mindfullnessSchema);
+module.exports = mongoose.model("mindfulness", mindfulnessSchema);

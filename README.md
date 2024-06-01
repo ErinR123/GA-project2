@@ -10,4 +10,4 @@ Java Script, HTML, CSS, Express, MongoDB.
 
 ## Ice Box Items:
 
-Additonally I would like the user to have options for multiple weeks. I would like a nutrition section and the user to be able to track their KM'S of the selected movement.
+Additonally I would like the user to have options for multiple weeks. I would like a nutrition section and the user to be able to track their KM"S of the selected movement.

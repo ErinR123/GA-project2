@@ -9,7 +9,6 @@ require("./config/passport");
 const ensureLoggedIn = require("./config/ensureLoggedIn");
 const methodOverride = require("method-override");
 
-// Create the Express app
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -30,24 +29,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// Add this middleware BELOW passport middleware
+
 app.use(function (req, res, next) {
-  res.locals.user = req.user; // Now the `user` variable is available inside all EJS templates (will be `undefined` if no logged in user)
+  res.locals.user = req.user;
   next();
 });
 
-//Routes
 app.use("/", require("./routes/index"));
 
 app.use("/movement", ensureLoggedIn, require("./routes/movement"));
 app.use("/sleep", ensureLoggedIn, require("./routes/sleep"));
 
-app.use("/mindfullness", ensureLoggedIn, require("./routes/mindfullness"));
+app.use("/mindfulness", ensureLoggedIn, require("./routes/mindfulness"));
 app.use("/weekOverview", ensureLoggedIn, require("./routes/weekOverview"));
 
-// Mount routes
 app.get("/", (req, res) => res.type("html").send(html));
-// Tell the app to listen on port 3000
+
 const server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
 );

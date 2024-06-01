@@ -11,10 +11,10 @@ const userSchema = new Schema(
     email: String,
     avatar: String,
 
-    mindfullness: [
+    mindfulness: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Mindfullness",
+        ref: "mindfulness",
       },
     ],
     sleep: [

@@ -13,17 +13,14 @@ async function add(req, res) {
 async function deleteMovement(req, res) {
   const movement = await Movement.findByIdAndDelete(req.params.movementId);
 
-  
-
   res.redirect("/weekOverview");
-};
+}
 
 async function update(req, res) {
   await Movement.findOneAndUpdate(
-    {_id: req.params.movementId},
-    // update object with updated properties
-    req.body,
-    // options object with new: true to make sure updated doc is returned
+    { _id: req.params.movementId },
+
+    req.body
   );
   res.redirect("/weekOverview");
 }
