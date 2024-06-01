@@ -6,37 +6,39 @@
 <div class="container mt-5">
   <div class="row">
     <!-- Day Headers -->
-    <div class="col text-center"><strong>Sunday</strong></div>
-    <div class="col text-center"><strong>Monday</strong></div>
-    <div class="col text-center"><strong>Tuesday</strong></div>
-    <div class="col text-center"><strong>Wednesday</strong></div>
-    <div class="col text-center"><strong>Thursday</strong></div>
-    <div class="col text-center"><strong>Friday</strong></div>
-    <div class="col text-center"><strong>Saturday</strong></div>
+    <% const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; %>
+    <% daysOfWeek.forEach(day => { %>
+      <div class="col text-center"><strong><%= day %></strong></div>
+    <% }) %>
   </div>
 
   <div class="row mt-2">
-    <% weekOptions.forEach(day => { %>
+    <% daysOfWeek.forEach(day => { %>
       <div class="col text-center">
         <!-- Mindfulness Card -->
         <div class="card mb-2">
           <div class="card-body p-2">
             <h5 class="card-title">Mindfulness</h5>
-            <% user.mindfulness.filter(m => m.dayOfWeekOption === day).forEach(m => { %>
-              <p><%= m.mindfulnessOption %></p>
-              <form action="/mindfulness/<%= m._id %>?_method=DELETE" method="POST" class="d-inline">
-                <button class="btn btn-link p-0" type="submit">Remove</button>
-              </form>
-              <button class="btn btn-link p-0 update-btn">Update</button>
-              <form action="/mindfulness/<%= m._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-                <select name="mindfulnessOption" class="form-select form-select-sm">
-                  <% mindfulnessOptions.forEach(option => { %>
-                    <option value="<%= option %>" <%= m.mindfulnessOption === option ? "selected" : "" %>><%= option %></option>
-                  <% }) %>
-                </select>
-                <button class="btn btn-link p-0 mt-1" type="submit">Update</button>
-              </form>
-            <% }) %>
+            <% const mindfulnessForDay = user.mindfulness.filter(m => m.dayOfWeekOption === day); %>
+            <% if (mindfulnessForDay.length > 0) { %>
+              <% mindfulnessForDay.forEach(m => { %>
+                <p><%= m.mindfulnessOption %></p>
+                <form action="/mindfulness/<%= m._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <button class="btn btn-link p-0" type="submit">Remove</button>
+                </form>
+                <button class="btn btn-link p-0 update-btn">Update</button>
+                <form action="/mindfulness/<%= m._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
+                  <select name="mindfulnessOption" class="form-select form-select-sm">
+                    <% mindfulnessOptions.forEach(option => { %>
+                      <option value="<%= option %>" <%= m.mindfulnessOption === option ? "selected" : "" %>><%= option %></option>
+                    <% }) %>
+                  </select>
+                  <button class="btn btn-link p-0 mt-1" type="submit">Update</button>
+                </form>
+              <% }) %>
+            <% } else { %>
+              <p>No mindfulness activities</p>
+            <% } %>
           </div>
         </div>
 
@@ -44,21 +46,26 @@
         <div class="card mb-2">
           <div class="card-body p-2">
             <h5 class="card-title">Movement</h5>
-            <% user.movement.filter(exercise => exercise.dayOfWeekOption === day).forEach(exercise => { %>
-              <p><%= exercise.movementOption %></p>
-              <form action="/movement/<%= exercise._id %>?_method=DELETE" method="POST" class="d-inline">
-                <button class="btn btn-link p-0" type="submit">Remove</button>
-              </form>
-              <button class="btn btn-link p-0 update-btn">Update</button>
-              <form action="/movement/<%= exercise._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-                <select name="movementOption" class="form-select form-select-sm">
-                  <% movementOptions.forEach(option => { %>
-                    <option value="<%= option %>" <%= exercise.movementOption === option ? "selected" : "" %>><%= option %></option>
-                  <% }) %>
-                </select>
-                <button class="btn btn-link p-0 mt-1" type="submit">Update</button>
-              </form>
-            <% }) %>
+            <% const movementForDay = user.movement.filter(exercise => exercise.dayOfWeekOption === day); %>
+            <% if (movementForDay.length > 0) { %>
+              <% movementForDay.forEach(exercise => { %>
+                <p><%= exercise.movementOption %></p>
+                <form action="/movement/<%= exercise._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <button class="btn btn-link p-0" type="submit">Remove</button>
+                </form>
+                <button class="btn btn-link p-0 update-btn">Update</button>
+                <form action="/movement/<%= exercise._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
+                  <select name="movementOption" class="form-select form-select-sm">
+                    <% movementOptions.forEach(option => { %>
+                      <option value="<%= option %>" <%= exercise.movementOption === option ? "selected" : "" %>><%= option %></option>
+                    <% }) %>
+                  </select>
+                  <button class="btn btn-link p-0 mt-1" type="submit">Update</button>
+                </form>
+              <% }) %>
+            <% } else { %>
+              <p>No movement activities</p>
+            <% } %>
           </div>
         </div>
 
@@ -66,21 +73,26 @@
         <div class="card mb-2">
           <div class="card-body p-2">
             <h5 class="card-title">Sleep</h5>
-            <% user.sleep.filter(hour => hour.dayOfWeekOption === day).forEach(hour => { %>
-              <p><%= hour.sleepOption %></p>
-              <form action="/sleep/<%= hour._id %>?_method=DELETE" method="POST" class="d-inline">
-                <button class="btn btn-link p-0" type="submit">Remove</button>
-              </form>
-              <button class="btn btn-link p-0 update-btn">Update</button>
-              <form action="/sleep/<%= hour._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-                <select name="sleepOption" class="form-select form-select-sm">
-                  <% sleepOptions.forEach(option => { %>
-                    <option value="<%= option %>" <%= hour.sleepOption === option ? "selected" : "" %>><%= option %></option>
-                  <% }) %>
-                </select>
-                <button class="btn btn-link p-0 mt-1" type="submit">Update</button>
-              </form>
-            <% }) %>
+            <% const sleepForDay = user.sleep.filter(hour => hour.dayOfWeekOption === day); %>
+            <% if (sleepForDay.length > 0) { %>
+              <% sleepForDay.forEach(hour => { %>
+                <p><%= hour.sleepOption %></p>
+                <form action="/sleep/<%= hour._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <button class="btn btn-link p-0" type="submit">Remove</button>
+                </form>
+                <button class="btn btn-link p-0 update-btn">Update</button>
+                <form action="/sleep/<%= hour._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
+                  <select name="sleepOption" class="form-select form-select-sm">
+                    <% sleepOptions.forEach(option => { %>
+                      <option value="<%= option %>" <%= hour.sleepOption === option ? "selected" : "" %>><%= option %></option>
+                    <% }) %>
+                  </select>
+                  <button class="btn btn-link p-0 mt-1" type="submit">Update</button>
+                </form>
+              <% }) %>
+            <% } else { %>
+              <p>No sleep activities</p>
+            <% } %>
           </div>
         </div>
       </div>
@@ -95,4 +107,5 @@
     });
   });
 </script>
+
 
