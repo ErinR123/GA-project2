@@ -1,111 +1,76 @@
 <%- include("../views/partials/partials") %>
 
-
-<head>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<div class="container mt-5">
-  <div class="row justify-content-center">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Mindfulness<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-yin-yang" viewBox="0 0 16 16">
-      <path d="M9.167 4.5a1.167 1.167 0 1 1-2.334 0 1.167 1.167 0 0 1 2.334 0"/>
-      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 0 1 7-7 3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 0 0 7 7 7 0 0 1-7-7m7 4.667a1.167 1.167 0 1 1 0-2.334 1.167 1.167 0 0 1 0 2.334"/>
-    </svg></h5>
-    <% user.mindfulness.forEach(m => { %>
-      <p><%= m.mindfulnessOption %> <%= m.dayOfWeekOption %></p>
-      <form action="/mindfulness/<%= m._id %>?_method=DELETE" method="POST">
-        <button class="card-link" type="submit">Remove</button>
-      </form>
-      <button class="card-link update-btn">Update</button>
-      <form action="/mindfulness/<%= m._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-        <select name="mindfulnessOption">
-          <% mindfulnessOptions.forEach(option => { %>
-            <option value="<%= option %>" <%= m.mindfulnessOption === option ? "selected" : "" %>><%= option %></option>
-          <% }) %>
-        </select>
-        <select name="dayOfWeekOption">
-          <% weekOptions.forEach(dayOption => { %>
-            <option value="<%= dayOption %>" <%= m.dayOfWeekOption === dayOption ? "selected" : "" %>><%= dayOption %></option>
-          <% }) %>
-        </select>
-        <button class="card-link" type="submit">Update</button>
-      </form>
-    <% }) %>
+<div class="container mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <!-- Mindfulness Card -->
+  <div class="card bg-white shadow-lg rounded-lg p-4">
+    <div class="card-body">
+      <h5 class="card-title text-xl font-bold flex items-center justify-between">
+        Mindfulness
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-yin-yang" viewBox="0 0 16 16">
+          <path d="M9.167 4.5a1.167 1.167 0 1 1-2.334 0 1.167 1.167 0 0 1 2.334 0"/>
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 0 1 7-7 3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 0 0 7 7 7 0 0 1-7-7m7 4.667a1.167 1.167 0 1 1 0-2.334 1.167 1.167 0 0 1 0 2.334"/>
+        </svg>
+      </h5>
+      <% user.mindfulness.forEach(m => { %>
+        <p class="mt-2"><%= m.mindfulnessOption %> <%= m.dayOfWeekOption %></p>
+        <form action="/mindfulness/<%= m._id %>?_method=DELETE" method="POST" class="inline-block">
+          <button class="text-blue-500 hover:underline" type="submit">Remove</button>
+        </form>
+        <button class="text-blue-500 hover:underline update-btn">Update</button>
+        <form action="/mindfulness/<%= m._id %>?_method=PUT" method="POST" style="display: none;" class="update-form mt-2">
+          <select name="mindfulnessOption" class="block w-full mt-1 p-2 border rounded-md">
+            <% mindfulnessOptions.forEach(option => { %>
+              <option value="<%= option %>" <%= m.mindfulnessOption === option ? "selected" : "" %>><%= option %></option>
+            <% }) %>
+          </select>
+          <select name="dayOfWeekOption" class="block w-full mt-2 p-2 border rounded-md">
+            <% weekOptions.forEach(dayOption => { %>
+              <option value="<%= dayOption %>" <%= m.dayOfWeekOption === dayOption ? "selected" : "" %>><%= dayOption %></option>
+            <% }) %>
+          </select>
+          <button class="text-blue-500 hover:underline mt-2" type="submit">Update</button>
+        </form>
+      <% }) %>
+    </div>
   </div>
-</div>
-</div>
-</div>
 
-
-
-
-
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Movement<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-walking" viewBox="0 0 16 16">
+  <!-- Movement Card -->
+  <div class="card bg-white shadow-lg rounded-lg p-4">
+    <div class="card-body">
+      <h5 class="card-title text-xl font-bold flex items-center justify-between">
+        Movement
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-walking" viewBox="0 0 16 16">
           <path d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M6.44 3.752A.75.75 0 0 1 7 3.5h1.445c.742 0 1.32.643 1.243 1.38l-.43 4.083a1.8 1.8 0 0 1-.088.395l-.318.906.213.242a.8.8 0 0 1 .114.175l2 4.25a.75.75 0 1 1-1.357.638l-1.956-4.154-1.68-1.921A.75.75 0 0 1 6 8.96l.138-2.613-.435.489-.464 2.786a.75.75 0 1 1-1.48-.246l.5-3a.75.75 0 0 1 .18-.375l2-2.25Z"/>
           <path d="M6.25 11.745v-1.418l1.204 1.375.261.524a.8.8 0 0 1-.12.231l-2.5 3.25a.75.75 0 1 1-1.19-.914zm4.22-4.215-.494-.494.205-1.843.006-.067 1.124 1.124h1.44a.75.75 0 0 1 0 1.5H11a.75.75 0 0 1-.531-.22Z"/>
-        </svg></h5>
-        <% user.movement.forEach(exercise => { %>
-          <p><%= exercise.movementOption %></p>
-          <form action="/movement/<%= exercise._id %>?_method=DELETE" method="POST">
-            <button class="card-link" type="submit">Remove</button>
-          </form>
-          <button class="card-link update-btn">Update</button>
-          <form action="/movement/<%= exercise._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-            <select name="movementOption">
-              <% movementOptions.forEach(option => { %>
-                <option value="<%= option %>" <%= exercise.movementOption === option ? "selected" : "" %>><%= option %></option>
-              <% }) %>
-            </select>
-            <button class="card-link" type="submit">Update</button>
-          </form>
-        <% }) %>
-      </div>
+        </svg>
+      </h5>
+      <% user.movement.forEach(exercise => { %>
+        <p class="mt-2"><%= exercise.movementOption %></p>
+        <form action="/movement/<%= exercise._id %>?_method=DELETE" method="POST" class="inline-block">
+          <button class="text-blue-500 hover:underline" type="submit">Remove</button>
+        </form>
+        <button class="text-blue-500 hover:underline update-btn">Update</button>
+        <form action="/movement/<%= exercise._id %>?_method=PUT" method="POST" style="display: none;" class="update-form mt-2">
+          <select name="movementOption" class="block w-full mt-1 p-2 border rounded-md">
+            <% movementOptions.forEach(option => { %>
+              <option value="<%= option %>" <%= exercise.movementOption === option ? "selected" : "" %>><%= option %></option>
+            <% }) %>
+          </select>
+          <button class="text-blue-500 hover:underline mt-2" type="submit">Update</button>
+        </form>
+      <% }) %>
     </div>
   </div>
-</div>
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Sleep<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+
+  <!-- Sleep Card -->
+  <div class="card bg-white shadow-lg rounded-lg p-4">
+    <div class="card-body">
+      <h5 class="card-title text-xl font-bold flex items-center justify-between">
+        Sleep
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
           <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9z"/>
-          <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1zm1.038 3.018a6 6 0 0 1 .924 0 6 6 0 1 1-.924 0M0 3.5c0 .753.333 1.429.86 1.887A8.04 8.04 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5M13.5 1c-.753 0-1.429.333-1.887.86a8.04 8.04 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1"/>
-        </svg></h5>
-        <% user.sleep.forEach(hour => { %>
-          <p><%= hour.sleepOption %></p>
-          <form action="/sleep/<%= hour._id %>?_method=DELETE" method="POST">
-            <button class="card-link" type="submit">Remove</button>
-          </form>
-          <button class="card-link update-btn">Update</button>
-          <form action="/sleep/<%= hour._id %>?_method=PUT" method="POST" style="display: none;" class="update-form">
-            <select name="sleepOption">
-              <% sleepOptions.forEach(option => { %>
-                <option value="<%= option %>" <%= hour.sleepOption === option ? "selected" : "" %>><%= option %></option>
-              <% }) %>
-            </select>
-            <button class="card-link" type="submit">Update</button>
-          </form>
-        <% }) %>
-      </div>
-    </div>
-  </div>
-</div>
-  </body>
-</html>
-  <script>
-  $(document).ready(function() {
-    $(".update-btn").click(function() {
-      $(this).siblings(".update-form").toggle();
-    });
-  });
-  </script>
+          <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1zm1.038 3.018a6 6 0 0 1 .924 0 6 6 0 1 1-.924 0M0 3.5c0 .753.333 1.429.86 1.887A8.04 8.04 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5M13.5 1c-.753 0-1.429.333-1.887.86a8.04 8.04 0 0 1 3.527 3.527A2.5 2.5
+
 
 
