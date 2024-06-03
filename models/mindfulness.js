@@ -13,4 +13,4 @@ const mindfulnessSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("mindfulness", mindfulnessSchema);
+module.exports = mongoose.model("Mindfulness", mindfulnessSchema);

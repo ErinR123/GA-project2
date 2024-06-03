@@ -26,18 +26,16 @@ async function update(req, res) {
   res.redirect("/weekOverview");
 }
 
-// async function rendermindfulness(req, res) {
-//   try {
-//     const weekOptions = await mindfulness.schema.path("dayOfWeekOption")
-//       .enumValues;
-//     const options = await mindfulness.schema.path("mindfulnessOption")
-//       .enumValues;
-//     res.render("mindfulness", { weekOptions, options });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// }
+async function rendermindfulness(req, res) {
+  try {
+    const options = await mindfulness.schema.path("mindfulnessOption")
+      .enumValues;
+    res.render("mindfulness", { options });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+}
 
 // async function rendermindfulness(req, res) {
 //   const user = await User.findById(req.user._id);
@@ -52,5 +50,5 @@ module.exports = {
   add,
   deletemindfulness,
   update,
-  // rendermindfulness,
+  rendermindfulness,
 };
