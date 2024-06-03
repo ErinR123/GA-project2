@@ -11,6 +11,11 @@ const sleepSchema = new mongoose.Schema({
       "8 Hours",
       "10 Hours",
     ],
+    required: true, 
+  },
+  date: {
+    type: Date,
+    default: Date.now, 
   },
 });
 

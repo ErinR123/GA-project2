@@ -10,6 +10,11 @@ const mindfulnessSchema = new mongoose.Schema({
       "Spoke to a friend",
       "Art",
     ],
+    required: true, 
+  },
+  date: {
+    type: Date,
+    default: Date.now, 
   },
 });
 

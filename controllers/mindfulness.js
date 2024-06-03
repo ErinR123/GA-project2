@@ -1,17 +1,17 @@
-const mindfulness = require("../models/mindfulness");
+const Mindfulness = require("../models/mindfulness");
 const User = require("../models/user");
 
 async function add(req, res) {
   const user = await User.findById(req.user._id);
   console.log(req.body);
-  const mindfulness = await mindfulness.create(req.body);
+  const mindfulness = await Mindfulness.create(req.body);
   user.mindfulness.push(mindfulness._id);
   await user.save();
   res.redirect("/weekOverview");
 }
 
 async function deletemindfulness(req, res) {
-  const mindfulness = await mindfulness.findByIdAndDelete(
+  const mindfulness = await Mindfulness.findByIdAndDelete(
     req.params.mindfulnessId
   );
 
@@ -19,36 +19,17 @@ async function deletemindfulness(req, res) {
 }
 
 async function update(req, res) {
-  await mindfulness.findOneAndUpdate(
+  await Mindfulness.findOneAndUpdate(
     { _id: req.params.mindfulnessId },
     req.body
   );
   res.redirect("/weekOverview");
 }
 
-async function rendermindfulness(req, res) {
-  try {
-    const options = await mindfulness.schema.path("mindfulnessOption")
-      .enumValues;
-    res.render("mindfulness", { options });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-}
 
-// async function rendermindfulness(req, res) {
-//   const user = await User.findById(req.user._id);
-//   console.log(req.body);
-//   const mindfulness = await Mindfulness.create(req.body);
-//   user.mindfulness.push(mindfulness._id);
-//   await user.save();
-//   res.redirect("/weekOverview");
-// }
 
 module.exports = {
   add,
   deletemindfulness,
   update,
-  rendermindfulness,
 };

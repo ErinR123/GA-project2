@@ -16,8 +16,7 @@ router.get(
 router.get(
   "/oauth2callback",
   passport.authenticate("google", {
-    successRedirect: "/wellness-links",
-    failureRedirect: "/",
+    successRedirect: "/weekOverview"
   })
 );
 
@@ -31,8 +30,6 @@ router.get("/", (req, res) => {
   res.render("mainpage");
 });
 
-router.get("/wellness-links", (req, res) => {
-  res.render("wellness-links");
-});
+
 
 module.exports = router;

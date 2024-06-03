@@ -11,8 +11,8 @@ router.get("/", async (req, res) => {
   const movementOptions = await Movement.schema.path("movementOption")
     .enumValues;
   const sleepOptions = await Sleep.schema.path("sleepOption").enumValues;
-  const weekOptions = await mindfulness.schema.path("dayOfWeekOption")
-    .enumValues;
+
+  
   const user = await User.findById(req.user._id)
     .populate("mindfulness")
     .populate("movement")
@@ -23,7 +23,6 @@ router.get("/", async (req, res) => {
     mindfulnessOptions,
     movementOptions,
     sleepOptions,
-    weekOptions,
   });
 });
 
