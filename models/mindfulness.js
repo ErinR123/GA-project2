@@ -11,10 +11,6 @@ const mindfulnessSchema = new mongoose.Schema({
       "Art",
     ],
   },
-  dayOfWeekOption: {
-    type: String,
-    enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-  },
 });
 
 module.exports = mongoose.model("mindfulness", mindfulnessSchema);
