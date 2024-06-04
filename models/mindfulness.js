@@ -4,9 +4,9 @@ const mindfulnessSchema = new mongoose.Schema({
   mindfulnessOption: {
     type: String,
     enum: [
-      "Meditate",
+      "Meditated",
       "Time outside",
-      "Read for 30 Minutes",
+      "Read",
       "Spoke to a friend",
       "Art",
     ],

@@ -1,31 +1,26 @@
 <%- include("../views/partials/partials") %>
-  <title>sleep</title>
+<title>sleep</title>
 <body id="sleep">
   <div class="card text-center">
     <div class="card-header">
-      
     </div>
     <div class="card-body">
-      <h5 class="card-title"><img id="sleepImage" src="images/sleepImage.png" alt=""></h5>
+      <h5 class="card-title"></h5>
       <p class="card-text"></p>
 
-
       <form action="/sleep" method="POST">
-          <div class="form-group">
-              <label for="sleepOption">Sleep Option</label>
-              <select class="form-control" name="sleepOption" id="sleepOption">
-                  <% options.forEach(option => { %>
-                      <option value="<%= option %>"><%= option %></option>
-                  <% }) %>
-              </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Add</button>
+        <div class="form-group">
+          <select class="form-control" name="sleepOption" id="sleepOption">
+            <% options.forEach(option => { %>
+              <option value="<%= option %>"><%= option %></option>
+            <% }) %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
       </form>
-
     </div>
     <div class="card-footer text-muted">
-      
     </div>
   </div>
-  </body>
+</body>
 </html>

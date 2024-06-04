@@ -1,32 +1,25 @@
 <%- include("../views/partials/partials") %>
-    <title>mindfulness</title>
+<title>mindfulness</title>
 <body>
-    
-    <div id="card" class="card text-center">
-        <div class="card-header">
-           
-        </div>
-        <div class="card-body">
-          <p class="card-text"><img id="mindfulnessImage" src="images/mindfulnessImage.png" alt=""></p>
-  
-        
-          <form action="/mindfulness" method="POST">
-              <div class="form-group">
-                  <label for="mindfulnessOption">Mindfulness Option</label>
-                  <select class="form-control" name="mindfulnessOption" id="mindfulnessOption">
-                      <% options.forEach(option => { %>
-                          <option value="<%= option %>"><%= option %></option>
-                      <% }) %>
-                  </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Add</button>
-          </form>
-  
-        </div>
-        <div class="card-footer text-muted">
-           
-        </div>
-      </div>
-    
+  <div id="card" class="card text-center">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <form action="/mindfulness" method="POST">
+          <div class="form-group">
+            <select class="form-control" name="mindfulnessOption" id="mindfulnessOption">
+              <% options.forEach(option => { %>
+                <option value="<%= option %>"><%= option %></option>
+              <% }) %>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </p>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>
 </body>
 </html>
